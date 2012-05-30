@@ -1,0 +1,16 @@
+{
+  "name": "Hangout Receptionist",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Auto-answer hangout invitations",
+  "content_scripts": [
+    {
+      "matches": ["https://plus.google.com/*"],
+      "css": [],
+      "js": ["listener.js"]
+    }
+  ],
+  "permissions": [
+    "https://plus.google.com/"
+  ]
+}
