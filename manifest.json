@@ -8,7 +8,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://plus.google.com/u/0/b/*"],
+      "matches": [
+        "https://plus.google.com/u/0/b/*",
+        "https://plus.google.com/b/*",
+        "https://plus.google.com/",
+        "https://plus.google.com/stream/*"],
       "css": [],
       "js": ["js/listener.js"]
     }
