@@ -15,7 +15,14 @@
         "https://plus.google.com/stream/*"],
       "css": [],
       "js": ["js/listener.js"]
+    },
+    {
+      "matches": [
+        "https://plus.google.com/hangouts/*"],
+      "css": [],
+      "js": ["js/hangout.js"]
     }
+
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "permissions": [
