@@ -10,13 +10,21 @@
     return link;
   };
   
+  var modificationListener = function(element, e) {
+    var count = 0;
+    try {
+      count = parseInt(element.innerText.trim());
+    } catch (e) {}
+    if (count) {
+      // Find a hangout.
+    }
+  };
+
   var listenToElement = function(element) {
-    var modificationListener = function(e) {
-      console.log('hi');
-    };
-    element.addEventListener('DOMSubtreeModified',modificationListener, false);
+    var boundListener = modificationListener.bind(this, element);
+    element.addEventListener('DOMSubtreeModified', boundListener, false);
     element.addEventListener('DOMNodeRemoved', function(e) {
-      element.removeEventListener('DOMSubtreeModified', modificationListener, false);
+      element.removeEventListener('DOMSubtreeModified', boundListener, false);
     }, false);
   };
 
