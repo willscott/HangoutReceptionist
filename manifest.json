@@ -8,14 +8,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://plus.google.com/*"],
+      "matches": ["https://plus.google.com/u/0/b/*"],
       "css": [],
       "js": ["js/listener.js"]
     }
   ],
-  "content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "permissions": [
-    "https://plus.google.com/",
-    "https://apis.google.com/"
+    "https://plus.google.com/"
   ]
 }
