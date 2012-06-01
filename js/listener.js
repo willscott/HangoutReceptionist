@@ -82,6 +82,7 @@
     }
   };
   var postListener = function(element, e) {
+    console.log('new post');
     var postQuery = document.evaluate(
         '//div[starts-with(@id,"update-")]',
         element,
@@ -100,11 +101,14 @@
     var boundListener = handler.bind(this, element);
     element.addEventListener('DOMSubtreeModified', boundListener, false);
     element.addEventListener('DOMNodeRemoved', function(e) {
-      element.removeEventListener('DOMSubtreeModified', boundListener, false);
+      if (e.srcElement == element) {
+        element.removeEventListener('DOMSubtreeModified', boundListener, false);
+        window.location.reload();
+      }
     }, false);
   };
 
-  addEventListener('load', function() {
+  window.setTimeout(function() {
     var stream = findStreamContainer();
     if (stream) {
       listenToElement(stream, postListener);      
@@ -112,5 +116,5 @@
       var link = findNotificationButton();
       listenToElement(link, modificationListener);
     }
-  }, false);
+  }, 5000);
 })();

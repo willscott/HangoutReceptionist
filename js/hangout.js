@@ -46,12 +46,21 @@
       }, 200);
       startQuietPhase();
     }
+  };
+
+  var waitForClose = function() {
+    document.addEventListener('DOMSubtreeModified', function() {
+      if (document.body.innerText.indexOf("Waiting for people to enter this hangout") > 0) {
+        window.close();
+      }
+    }, false);
   }
 
   window.setTimeout(function() {
     var join = findJoinButton();
     if (join) {
       maybeTakeAction(join);
+      waitForClose();
     }
   }, 5000);
 })();
