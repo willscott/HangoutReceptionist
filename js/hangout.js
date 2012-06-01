@@ -61,6 +61,10 @@
     if (join) {
       maybeTakeAction(join);
       waitForClose();
+    } else {
+      if (document.body.innerText.indexOf("Start a Hangout") > -1) {
+        window.close();
+      }
     }
   }, 5000);
 })();
