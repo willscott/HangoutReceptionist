@@ -51,6 +51,7 @@
   var waitForClose = function() {
     document.addEventListener('DOMSubtreeModified', function() {
       if (document.body.innerText.indexOf("Waiting for people to enter this hangout") > 0) {
+        chrome.extension.sendRequest({"state":"off"}, function() {});
         window.close();
       }
     }, false);
@@ -59,6 +60,7 @@
   window.setTimeout(function() {
     var join = findJoinButton();
     if (join) {
+      chrome.extension.sendRequest({"state":"on"}, function() {});
       maybeTakeAction(join);
       waitForClose();
     } else {
